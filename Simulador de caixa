@@ -1,0 +1,73 @@
+//Elizadora
+//Valter
+
+import java.util.Scanner;
+
+public class caixa {
+
+    public static void main(String[] args) {
+        double saldo = 0, deposito= 0;
+        caixa obj = new caixa();
+        Scanner tcl = new Scanner(System.in);
+
+        while (true) {
+            obj.Menu();
+            int escolha = tcl.nextInt();
+
+            switch (escolha) {
+                case 1:
+                    obj.Saldo(saldo);
+                    break;
+                case 2:
+                    saldo = obj.Saque(saldo);
+                    break;
+                case 3:
+                    saldo = obj.Deposito(saldo);
+                    break;
+                case 4:
+                    obj.Sair();
+                default:
+                    System.out.println("Digite um valor válido");
+            }
+        }
+    }
+
+    public void Menu() {
+        System.out.println("---Simulador de caixa---");
+        System.out.println("");
+        System.out.println("1-Saldo");
+        System.out.println("2-Saque");
+        System.out.println("3-Depósito");
+        System.out.println("4-Sair");
+    }
+
+    public void Saldo(double saldo) {
+        System.out.println("O valor do seu saldo é de " + saldo);
+    }
+
+    public double Saque( double saldo) {
+        Scanner tcl = new Scanner(System.in);
+        System.out.println("Digite o valor do saque");
+        double saque = tcl.nextDouble();
+        saldo = saldo - saque;
+        return saldo;
+    }
+
+    public double Deposito(double saldo) {
+        Scanner tcl = new Scanner(System.in);
+        System.out.println("Digite o valor do depósito");
+        double deposito = tcl.nextDouble();
+        saldo = saldo + deposito;
+        return saldo;
+    }
+
+    public void Sair() {
+        Scanner tcl = new Scanner(System.in);
+        System.out.println("Deseja realmente sair?S/N");
+        String escolha = tcl.next();
+        if (escolha.equals("S")) {
+            System.exit(0);
+        }
+    }
+
+}
